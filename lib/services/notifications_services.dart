@@ -61,7 +61,7 @@ class NotifyHelper {
     );
   }
 
-  displayNotification({required String title, required String body}) async {
+  displayNotification({String title, String body}) async {
     print("doing test");
     var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
         'your channel id', 'your channel name', 'your channel description',
