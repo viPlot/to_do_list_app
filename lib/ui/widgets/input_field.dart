@@ -9,7 +9,7 @@ class MyInputField extends StatelessWidget {
   final String hint;
   final Widget widget;
   final TextEditingController controller;
-  const MyInputField({Key? key,
+  const MyInputField({Key key,
     this.title,
     this.hint,
     this.controller,

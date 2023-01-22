@@ -17,7 +17,7 @@ import '../controllers/task_controller.dart';
 import '../models/task.dart';
 
 class AddTaskPage extends StatefulWidget {
-  const AddTaskPage({Key? key}) : super(key: key);
+  const AddTaskPage({Key key}) : super(key: key);
 
   @override
   _AddTaskPageState createState() => _AddTaskPageState();
@@ -159,15 +159,17 @@ class _AddTaskPageState extends State<AddTaskPage> {
   }
 
   _validatedDate() {
-    if(_titleController.text.isNotEmpty&&_noteController.text.isNotEmpty)
+    if(_titleController.text.isNotEmpty&&_noteController.text.isNotEmpty) {
       _addTaskToDB();
       Get.back();
-    else if(_titleController.text.isEmpty || _noteController.text.isEmpty)
+    }
+    else if(_titleController.text.isEmpty || _noteController.text.isEmpty) {
       Get.snackbar("Required", "All fields are required",
       snackPosition: SnackPosition.BOTTOM,
       backgroundColor: Colors.white,
-        icon: Icon(Icons.warning_amber_rounded)
+      icon: Icon(Icons.warning_amber_rounded)
       );
+    }
   }
 
   _addTaskToDB() async{
