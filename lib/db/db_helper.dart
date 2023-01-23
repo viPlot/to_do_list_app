@@ -25,13 +25,13 @@ class DBHelper {
               "startTime STRING, endTime STRING, "
               "remind INTEGER, repeat STRING, "
               "color INTEGER, "
-              "isCompleted INTEGER)",
+              "isCompleted INTEGER)"
         );
         },
     );
     } catch(e) {
       print(e);
-  }
+    }
   }
 
   static Future<int> insert(Task task) async {
@@ -47,5 +47,13 @@ class DBHelper {
   static delete(Task task) async {
     print("insert function called");
     return await _db?.delete(_tableName, where: 'id = ?', whereArgs: [task.id]);
+  }
+
+  static update(int id) async {
+    return await _db.rawUpdate('''
+    UPDATE tasks
+    SET isCompleted = ?
+    WHERE id = ?
+    ''', [1, id]);
   }
 }

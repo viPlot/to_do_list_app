@@ -105,23 +105,36 @@ class _HomePageState extends State<HomePage> {
             task.isCompleted == 1?Container():_bottomSheetButton(
               label: "Task Completed",
               onTap: (){
+                _taskController.markTaskCompleted(task.id);
                 Get.back();
               },
               clr: primaryClr,
               context: context
             ),
-            SizedBox(
-              height: 20,
-
-            ),
             _bottomSheetButton(
                 label: "Delete Task",
                 onTap: (){
+                  _taskController.delete(task);
                   Get.back();
                 },
                 clr: pinkClr,
                 context: context
-            )
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            _bottomSheetButton(
+                label: "Close",
+                onTap: (){
+                  Get.back();
+                },
+                clr: pinkClr,
+                isClose:true,
+                context: context
+            ),
+            SizedBox(
+              height: 10,
+            ),
           ],
         ),
       ),
@@ -144,10 +157,10 @@ class _HomePageState extends State<HomePage> {
         decoration: BoxDecoration(
           border: Border.all(
             width: 2,
-            color: isClose == true?Colors.red:clr
+            color: isClose == true?Get.isDarkMode?Colors.grey[600]:Colors.grey[300]:clr
           ),
           borderRadius: BorderRadius.circular(20),
-            color: isClose == true?Colors.red:clr
+            color: isClose == true?Colors.transparent:clr
         ),
 
         child: Center(
