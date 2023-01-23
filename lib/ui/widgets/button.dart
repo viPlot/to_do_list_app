@@ -1,4 +1,3 @@
-import 'dart:html';
 import 'dart:ui';
 
 import 'package:To_do_list_app/ui/theme.dart';
@@ -13,20 +12,21 @@ class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () => onTap,
       child: Container(
-        width: 120,
+        width: 100,
         height: 60,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: primaryClr),
-      ),
-      child: Text(
-        label,
-        style: TextStyle(
-          color: Colors.white,
+          color: primaryClr
         ),
-      )
+        child: Text(
+          label,
+          style: TextStyle(
+            color: Colors.white
+          ),
+        ),
+      ),
     );
   }
 }

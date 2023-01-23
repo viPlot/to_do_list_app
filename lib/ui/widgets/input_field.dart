@@ -63,9 +63,10 @@ class MyInputField extends StatelessWidget {
                         width: 0
                       ),
                     ),
-                  ),
-                );
-                widget == null?Container():Container(child: widget);
+                  )
+            )
+                ),
+                widget == null?Container():Container(child: widget)
                 ],
             )
           )

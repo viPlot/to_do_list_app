@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:To_do_list_app/models/task.dart';
+import 'package:To_do_list_app/ui/notified_page.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 import 'package:get/get.dart';
@@ -55,7 +56,12 @@ class NotifyHelper {
     } else {
       print("Notification Done");
     }
-    Get.to(() => Container(color: Colors.white,));
+
+    if(payload == "Theme Changed") {
+      print("Nothing navigate to");
+    } else {
+      Get.to(() => NotifiedPage(label:payload));
+    }
   }
 
   displayNotification({String title, String body}) async {
@@ -74,7 +80,7 @@ class NotifyHelper {
       title,
       body,
       platformChannelSpecifics,
-      payload: 'Default_Sound',
+      payload: title,
     );
 
     tz.TZDateTime _convertTime(int hour, int minutes) {
@@ -99,7 +105,9 @@ class NotifyHelper {
           androidAllowWhileIdle: true,
           uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
-          matchDateTimeComponents: DateTimeComponents.time
+          matchDateTimeComponents: DateTimeComponents.time,
+        payload: "${task.title}|"+"${task.note}|"
+
       );
     }
 
